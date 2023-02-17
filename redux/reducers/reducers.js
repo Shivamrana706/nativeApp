@@ -1,17 +1,17 @@
 
 
 
-export const Reducer = (state = { Reduxdata: [] }, action) => {
+export const Reducer = (state = { ReduxData: [] }, action) => {
     switch (action.type) {
         case 'GetData':
-            return { ...state, Reduxdata: action.payload }
+            return { ...state, ReduxData: action.payload }
 
         case 'DeleteData':
-            return { ...state, Reduxdata: state.Reduxdata.filter(item => item.id !== action.payload) }
+            return { ...state, ReduxData: state.ReduxData.filter(item => item.id !== action.payload) }
 
         case 'FavoriteData':
             return {
-                ...state, Reduxdata: state.Reduxdata.map((item) => {
+                ...state, ReduxData: state.ReduxData.map((item) => {
                     if (item.id == action.payload.id) {
                         return { ...item, ...action.payload.obj }
                     } else {

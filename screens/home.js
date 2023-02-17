@@ -6,16 +6,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import SecondView from '../components/secondView';
 import FirstView from '../components/firstView';
 import { GetData } from '../redux/action/action';
+import { ImagesResponseData } from '../interface/imageData';
+
+
 
 
 const Home = ({ navigation }) => {
     const layout = useWindowDimensions();
 
-    const { Reduxdata } = useSelector(state => state.reducerAPI);
+    const { ReduxData } = useSelector(state => state.reducerAPI);
 
     const [index, setIndex] = useState(0);
 
     const dispatch = useDispatch();
+
+    const sortedData = ReduxData.sort((a, b) => {
+        const dateA = new Date(a.createdAt)
+        const dateB = new Date(b.createdAt)
+
+        if (dateA > dateB) return 1;
+        if (dateA < dateB) return -1;
+        return 0;
+    })
+
 
     const [routes] = useState([
         { key: 'Recent', title: 'Recent' },
@@ -25,12 +38,12 @@ const Home = ({ navigation }) => {
 
     const FirstRoute = () => {
         return (
-            <FirstView data={Reduxdata} navigation={navigation} />
+            <FirstView data={sortedData} navigation={navigation} />
         )
     };
     const SecondRoute = () => {
         return (
-            <SecondView data={Reduxdata} navigation={navigation} />
+            <SecondView data={sortedData} navigation={navigation} />
         )
     };
     const renderScene = SceneMap({

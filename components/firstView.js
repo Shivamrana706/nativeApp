@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, } from "react-native";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import { useDispatch } from 'react-redux';
-
-// import { deleteDataFunction, favoriteDataFunction } from "../reduxFunction/reduxFunction";
 import { DeleteData, FavoriteData } from "../redux/action/action";
+import { ImagesResponseData } from '../interface/imageData';
 
 const FirstView = ({ data, navigation }) => {
     const dispatch = useDispatch();

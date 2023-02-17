@@ -6,7 +6,7 @@ import { StyleSheet, View, Text } from 'react-native';
 const Header = () => {
     return (
         <View style={style.header}>
-            <Text style={style.headerText}>Home</Text>
+            <Text style={style.headerText}>Photo Gallery</Text>
         </View>
     )
 }
